@@ -15,7 +15,7 @@ var callback = function(details) {
 	}
 };
 var filter = {
-	urls: ["https://utas.external.s3.fut.ea.com/ut/game/fifa18/purchased/*"]
+	urls: ["*://*/*"]
 };
 var opt_extraInfoSpec = [
 	
