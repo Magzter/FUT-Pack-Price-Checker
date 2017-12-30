@@ -1,4 +1,5 @@
 $(function() {
+	var loadingUrl = chrome.extension.getURL("img/loading.gif");
 	//Check if element is ready to start manipulating DOM
 	$.initialize(".list-view-header", function() {
 		//Remove existing elements
@@ -9,11 +10,9 @@ $(function() {
 		if($('.check-prices').length < 1) {
 			$('.Unassigned .list-view-header').first().append('<button class="standard section-header-btn mini call-to-action check-prices" id="check-prices">Check Prices</button>');
 		}
-		//Remove button when clicked to stop duplicate pressing
 		$('#check-prices').on('click', function() {
-			$(this).fadeOut();
-		});
-		$('#check-prices').on('click', function() {
+			$('body').prepend('<div id="cover" style="background: url(&quot;' + loadingUrl + '&quot;) no-repeat scroll center center #FFF; position: absolute; height: 100%; width: 100%; z-index: 10000000000; opacity: 0.4;"></div>');
+			$('.check-prices').fadeOut();
 			//Each line item element in the web app from the pack opening
 			$('.itemList .listFUTItem').each(function() {
 				//Check to make sure the type of item is a player
@@ -159,7 +158,10 @@ $(function() {
 			$('.futbin_link').on('click', function() {
 				link = $(this).attr('link');
 				window.open(link, '_blank');
-			});	
+			});
+			$('#cover').fadeOut(function() {
+				$('#cover').remove();
+			});
 		});
 	});
 });
