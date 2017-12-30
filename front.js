@@ -6,10 +6,7 @@ $(function() {
 			$(this).remove();
 		});
 		//Add custom button
-		$('.list-view-header').each(function() { 
-			$('.list-view-header').append('<button class="standard section-header-btn mini call-to-action check-prices" id="check-prices">Check Prices</button>');
-			return false;
-		});
+		$('.list-view-header').first().append('<button class="standard section-header-btn mini call-to-action check-prices" id="check-prices">Check Prices</button>');
 		//Remove button when clicked to stop duplicate pressing
 		$('#check-prices').on('click', function() {
 			$(this).fadeOut();
