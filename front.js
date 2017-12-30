@@ -1,12 +1,14 @@
 $(function() {
-	//Check if itemList is ready to start manipulating DOM
-	$.initialize(".itemList", function() {
+	//Check if element is ready to start manipulating DOM
+	$.initialize(".list-view-header", function() {
 		//Remove existing elements
 		$('.check-prices').each(function() {
 			$(this).remove();
 		});
 		//Add custom button
-		$('.list-view-header').first().append('<button class="standard section-header-btn mini call-to-action check-prices" id="check-prices">Check Prices</button>');
+		if($('.check-prices').length < 1) {
+			$('.Unassigned .list-view-header').first().append('<button class="standard section-header-btn mini call-to-action check-prices" id="check-prices">Check Prices</button>');
+		}
 		//Remove button when clicked to stop duplicate pressing
 		$('#check-prices').on('click', function() {
 			$(this).fadeOut();
